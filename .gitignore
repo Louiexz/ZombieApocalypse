@@ -1,1 +1,7 @@
 /teste.py
+assets/__pycache__
+assets/scripts/__pycache__
+assets/scripts/game/__pycache__
+assets/scripts/main/__pycache__
+assets/scripts/characters/__pycache__
+assets/scripts/characters/functs/__pycache__

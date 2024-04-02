@@ -12,6 +12,7 @@ class ZombieFuncts():
         
         settings.zombie_speed_factor += 1
         settings.stage += 1
+        settings.zombies_allowed += 1
         if settings.bg_color != settings.ruina: settings.bg_color = settings.terra
 
     @staticmethod
@@ -34,19 +35,21 @@ class ZombieFuncts():
         return False
     
     @staticmethod
-    def check_fleet_edges(zombies, screen, settings):
-        for zombie in zombies.sprites(): zombie.check_edges(screen)
+    def checks_zombie(zombies, screen, player):
+        for zombie in zombies.sprites():
+            zombie.check_edges(screen)
+            zombie.check_player(player)
     
     @staticmethod
-    def update_zombies(zombies, screen, settings):
-        ZombieFuncts.check_fleet_edges(zombies, screen, settings)
+    def update_zombies(zombies, screen, settings, player):
+        ZombieFuncts.checks_zombie(zombies, screen, player)
         zombies.update(settings)
         zombies.draw(screen)
 
     @staticmethod
     def handle_game_logic(screen, player, bullets, zombies, settings):
         valores = []
-        ZombieFuncts.update_zombies(zombies, screen, settings)
+        ZombieFuncts.update_zombies(zombies, screen, settings, player)
         valores.append(ZombieFuncts.check_bullet_zombie_collisions(bullets, zombies, settings))
         valores.append(ZombieFuncts.check_zombies_attack(screen, player, settings, zombies))
         return valores
@@ -58,7 +61,7 @@ class ZombieFuncts():
 
         # Check for zombies hitting the player
         for zombie in zombies.sprites():
-            if zombie.rect.x == player.rect.x:
+            if abs(zombie.rect.centerx - player.rect.centerx) <= settings.tolerance:
                 img = zombie.zombie_image.split('_')
                 zombie.image = pyg.image.load(f'./assets/imagens/enemies/attack/{img[0]}_attack.png') 
                 settings.player_lifes -= 1

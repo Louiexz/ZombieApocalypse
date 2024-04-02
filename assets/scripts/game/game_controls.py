@@ -9,7 +9,7 @@ class GameControls:
     def update_bullets(bullets, zombies, settings):
         bullets.update()
         for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
+            if not (0 < bullet.rect.bottom < settings.screen_height and 0 < bullet.rect.left < settings.screen_width):
                 bullets.remove(bullet)
                 ZombieFuncts.check_bullet_zombie_collisions(bullets, zombies, settings)
 

@@ -18,7 +18,6 @@ class Player(Sprite):
 		self.rect.center = (ai_sets.screen_width // 2, ai_sets.screen_height // 2)  # Define a posição inicial do personagem
 		# Inicia cada novo personagem no centro da tela
 		self.rect.centerx = self.rect.center[0]
-		self.rect.bottom = self.rect.center[1]
 		# Armazena um valor decimal para o centro do personagem
 		self.center = float(self.rect.centerx)
 		self.bottom = float(self.rect.bottom)
@@ -42,28 +41,20 @@ class Player(Sprite):
 		angle = math.degrees(math.atan2(dy, dx))
 
 		# Atualiza o sprite do jogador com base na direção
-		if -45 < angle <= 45:
-			self.image = self.image_right
-		elif 45 < angle <= 135:
-			self.image = self.image_down
-		elif 135 < angle <= 180 or -180 <= angle <= -135:
-			self.image = self.image_left
-		else:
-			self.image = self.image_up
-
+		if -45 < angle <= 45: self.image = self.image_right
+		elif 45 < angle <= 135: self.image = self.image_down
+		elif 135 < angle <= 180 or -180 <= angle <= -135: self.image = self.image_left
+		else: self.image = self.image_up
+	
 	def update_state(self):
 		if self.moving_right and self.rect.right < self.screen_rect.right:
-			map(lambda x: False, [self.moving_left, self.moving_up, self.moving_down])
-			self.center += self.ai_sets.ship_speed_factor
+			self.centerx += self.ai_sets.player_speed_factor
 		elif self.moving_left and self.rect.left > 0:
-			map(lambda x: False, [self.moving_right, self.moving_up, self.moving_down])
-			self.center -= self.ai_sets.ship_speed_factor
-		elif self.moving_up and self.rect.top < self.screen_rect.top:
-			map(lambda x: False, [self.moving_right, self.moving_left, self.moving_down])
-			self.bottom += self.ai_sets.ship_speed_factor
+			self.centerx -= self.ai_sets.player_speed_factor
+		elif self.moving_up and self.rect.top > 0:
+			self.centery -= self.ai_sets.player_speed_factor
 		elif self.moving_down and self.rect.bottom < self.screen_rect.bottom:
-			map(lambda x: False, [self.moving_right, self.moving_left, self.moving_up])
-			self.bottom -= self.ai_sets.ship_speed_factor
+			self.centery += self.ai_sets.player_speed_factor
 
 	def restart(self):
 		self.rect.centerx = self.rect.center[0]
