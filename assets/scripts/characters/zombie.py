@@ -20,11 +20,8 @@ class Zombie(pyg.sprite.Sprite):
         self.fleet_direction_y = 1
         
     def check_edges(self, screen):
-        if not 0 <= self.rect.left <= screen.get_rect().right:
-            self.fleet_direction_x *= -1
-        if not 0 <= self.rect.bottom <= screen.get_rect().top:
-            self.fleet_direction_y *= -1
-
+        if not 0 <= self.rect.left <= screen.get_rect().right: self.fleet_direction_x *= -1
+        if not 0 <= self.rect.bottom <= screen.get_rect().top: self.fleet_direction_y *= -1
         
     def check_player(self, player):
         if player.rect.centerx < self.rect.centerx: self.fleet_direction_x = -1

@@ -45,7 +45,6 @@ class GameFuncts:
 
     @staticmethod
     def shoot(character, bullets, settings):
-        character.moving_left = character.moving_right = False
         if len(bullets) < settings.bullets_allowed:
             GameFuncts.play_sound("game/shoot")
             new_bullet = Bullet(settings, settings.screen, character)

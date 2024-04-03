@@ -7,12 +7,12 @@ class ZombieFuncts():
     def nivels(settings):
         if settings.count % 100 == 0:
             settings.bullets_allowed += 2
-            settings.player_speed_factor += 5
+            settings.player_speed_factor += 2
             settings.bg_color = settings.ruina
         
-        settings.zombie_speed_factor += 1
+        settings.zombie_speed_factor += 0.5
         settings.stage += 1
-        settings.zombies_allowed += 1
+        settings.zombies_allowed += 0.5
         if settings.bg_color != settings.ruina: settings.bg_color = settings.terra
 
     @staticmethod
@@ -61,7 +61,7 @@ class ZombieFuncts():
 
         # Check for zombies hitting the player
         for zombie in zombies.sprites():
-            if abs(zombie.rect.centerx - player.rect.centerx) <= settings.tolerance:
+            if zombie.rect.colliderect(player.rect):
                 img = zombie.zombie_image.split('_')
                 zombie.image = pyg.image.load(f'./assets/imagens/enemies/attack/{img[0]}_attack.png') 
                 settings.player_lifes -= 1

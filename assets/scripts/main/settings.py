@@ -21,7 +21,7 @@ class Settings():
 		self.player_speed_factor = 3
 		self.player_lifes = 3
 		# Verifica se o zumbi está a está distância
-		self.tolerance = 20
+		self.tolerance = 5
 		# Configurações dos zombies
 		self.zombie_speed_factor = 1
 		self.zombies_allowed = 5

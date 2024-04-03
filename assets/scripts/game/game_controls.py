@@ -97,6 +97,7 @@ Zombies killed: {settings.count}\nBullets: {settings.bullets_allowed - len(bulle
             
             GameControls().update_bullets(bullets, zombies, settings)
             player.update()
+            player.update_state(screen)
 
             som = ZombieFuncts.handle_game_logic(screen, player, bullets, zombies, settings)
             if som[0] == True: GameFuncts().play_sound("zombie/zombie-death")
