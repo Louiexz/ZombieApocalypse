@@ -6,11 +6,11 @@ class ZombieFuncts():
     @staticmethod
     def nivels(settings):
         if settings.count % 100 == 0:
-            settings.bullets_allowed += 2
+            settings.bullets_allowed += 1
             settings.player_speed_factor += 2
             settings.bg_color = settings.ruina
         
-        settings.zombie_speed_factor += 0.5
+        settings.zombie_speed_factor += 1
         settings.stage += 1
         settings.zombies_allowed += 0.5
         if settings.bg_color != settings.ruina: settings.bg_color = settings.terra

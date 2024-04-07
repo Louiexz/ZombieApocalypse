@@ -25,23 +25,32 @@ class Player(Sprite):
 		self.bottom = float(self.rect.bottom)
 		# Flags de movimento
 		self.keys = [False] * 4 # 0 = direita, 1 - esquerda, 2 - cima, 3 - baixo
+		self.value = 3# Direção da imagem do personagem
 	
 	def blitme(self):
 		"""Desenha o personagem em sua posição atual."""
 		self.screen.blit(self.image, self.rect)
 
 	def update_image(self):
+		if self.value == 0: self.image = self.image_right
+		elif self.value == 1: self.image = self.image_left
+		elif self.value == 2: self.image = self.image_up
+		else: self.image = self.image_down
+
+	def get_mouse_pos(self):
 		mouse_pos = pyg.mouse.get_pos()
 		"""Atualiza a posição do personagem de acordo com as flags de movimento."""
 		dx = mouse_pos[0] - self.rect.centerx
 		dy = mouse_pos[1] - self.rect.centery
-		angle = math.degrees(math.atan2(dy, dx))
+		angle = math.degrees(math.atan2(-dy, dx))
 
-		# Atualiza o sprite do jogador com base na direção
-		if -45 < angle <= 45: self.image = self.image_right
-		elif 45 < angle <= 135: self.image = self.image_down
-		elif 135 < angle <= 180 or -180 <= angle <= -135: self.image = self.image_left
-		else: self.image = self.image_up
+		# Atualiza o sprite do jogador com base na direção do mouse
+		if -45 < angle <= 45: self.value = 0
+		elif 135 < angle <= 225: self.value = 1
+		elif 45 < angle <= 135: self.value = 2
+		else: self.value = 3
+
+		self.update_image()
 	
 	def update_state(self, screen):
 		"""Atualiza o movimento do personagem."""

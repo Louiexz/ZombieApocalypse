@@ -96,7 +96,6 @@ Zombies killed: {settings.count}\nBullets: {settings.bullets_allowed - len(bulle
                 GameFuncts.show_settings(screen, settings)
             
             GameControls().update_bullets(bullets, zombies, settings)
-            player.update()
             player.update_state(screen)
 
             som = ZombieFuncts.handle_game_logic(screen, player, bullets, zombies, settings)

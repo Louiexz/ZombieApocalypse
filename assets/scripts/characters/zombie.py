@@ -9,12 +9,14 @@ class Zombie(pyg.sprite.Sprite):
         self.zombie_image = image
         self.image = pyg.image.load('./assets/imagens/enemies/idle/' + image)
         self.rect = self.image.get_rect()
+
         # Start each new zombie near the top left of the screen.
-        self.rect.centerx = randint(10, int(settings.screen_width) - 10)  # Garante que o zumbi não fique muito próximo das bordas
-        self.rect.bottom = randint(10, int(settings.screen_height) - 10)  # Garante que o zumbi não fique muito próximo das bordas
+        self.rect.centerx = randint(10, int(settings.screen_width) - 10)
+        self.rect.bottom = randint(10, int(settings.screen_height) - 10)
         # Store the zombie's exact position.
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
+        
         # Direção do zombie
         self.fleet_direction_x = 1
         self.fleet_direction_y = 1

@@ -4,10 +4,20 @@ import pygame as pyg
 class InputControls():
     @staticmethod
     def handle_keyboard_down_events(event, player):
-        if event.key == pyg.K_RIGHT: player.keys[0] = True
-        elif event.key == pyg.K_LEFT: player.keys[1] = True
-        elif event.key == pyg.K_UP: player.keys[2] = True
-        elif event.key == pyg.K_DOWN: player.keys[3] = True
+        if event.key == pyg.K_RIGHT:
+            player.value = 0
+            player.keys[0] = True
+        elif event.key == pyg.K_LEFT:
+            player.value = 1
+            player.keys[1] = True
+        elif event.key == pyg.K_UP:
+            player.value = 2
+            player.keys[2] = True
+        elif event.key == pyg.K_DOWN:
+            player.value = 3
+            player.keys[3] = True
+        player.update_image()
+        
         if event.key == pyg.K_SPACE: return 1
         elif event.key == pyg.K_r: return 2
         elif event.key == pyg.K_e: return 3
@@ -18,6 +28,7 @@ class InputControls():
         elif event.key == pyg.K_LEFT: player.keys[1] = False
         elif event.key == pyg.K_UP: player.keys[2] = False
         elif event.key == pyg.K_DOWN: player.keys[3] = False
+        else: player.keys = [False] * 4
 
     @staticmethod
     def _process_mouse_input(event, player, buttons):
@@ -27,8 +38,7 @@ class InputControls():
                     if button.text == "Stop/Rerun": return 2
                     elif button.text == "Instructions": return 3
                     else: sys.exit()
-        
-        player.update_image()
+        player.get_mouse_pos()
         return 1
 
     @staticmethod
