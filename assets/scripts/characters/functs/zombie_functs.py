@@ -51,14 +51,11 @@ class ZombieFuncts():
         valores = []
         ZombieFuncts.update_zombies(zombies, screen, settings, player)
         valores.append(ZombieFuncts.check_bullet_zombie_collisions(bullets, zombies, settings))
-        valores.append(ZombieFuncts.check_zombies_attack(screen, player, settings, zombies))
+        valores.append(ZombieFuncts.check_zombies_attack(player, settings, zombies))
         return valores
 
     @staticmethod
-    def check_zombies_attack(screen, player, settings, zombies):
-        # Verifica se algum zombieígena alcançou a parte inferior da tela.
-        screen_rect = screen.get_rect()
-
+    def check_zombies_attack(player, settings, zombies):
         # Check for zombies hitting the player
         for zombie in zombies.sprites():
             if zombie.rect.colliderect(player.rect):

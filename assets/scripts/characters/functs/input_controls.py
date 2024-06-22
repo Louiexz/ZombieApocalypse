@@ -21,6 +21,7 @@ class InputControls():
         if event.key == pyg.K_SPACE: return 1
         elif event.key == pyg.K_r: return 2
         elif event.key == pyg.K_e: return 3
+        elif event.key == pyg.K_m: return 4
 
     @staticmethod
     def handle_keyboard_up_events(event, player):
@@ -37,6 +38,7 @@ class InputControls():
                 if button.rect.collidepoint(event.pos):
                     if button.text == "Stop/Rerun": return 2
                     elif button.text == "Instructions": return 3
+                    elif button.text == "Som": return 4
                     else: sys.exit()
         player.get_mouse_pos()
         return 1

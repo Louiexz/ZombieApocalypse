@@ -10,6 +10,8 @@ class Settings():
 		self.bg_color = (100, 100, 100)
 		self.ruina = (250, 75, 0)
 		self.terra = (150, 75, 0)
+		# Reprodução de sons
+		self.estado_som = True
 		# Levels
 		self.stage = 0
 		# Configurações dos projéteis
@@ -20,18 +22,19 @@ class Settings():
 		self.bullets_allowed = 3
 		# Configurações da espaçonave
 		self.player_speed_factor = 3
-		self.player_lifes = 3
+		self.player_lifes = 10
 		# Configurações dos zombies
 		self.zombie_speed_factor = 2
 		self.zombies_allowed = 5
 		# zombies mortos
 		self.count = 0
 		# Botões
-		button1_rect = [screen_width * 0.75, screen_height * 0.05, 160, 40, (0, 0, 0), "Instructions"]
+		button1_rect = [screen_width * 0.85, screen_height * 0.05, 160, 40, (0, 0, 0), "Instructions"]
 		button2_rect = [20, screen_height * 0.2, 140, 40, (255, 0, 0), "Quit"]
-		button3_rect = [20, screen_height * 0.25, 140, 40, (0, 0, 0), "Stop/Rerun"]
+		button3_rect = [20, screen_height * 0.3, 140, 40, (0, 0, 0), "Stop/Rerun"]
+		button4_rect = [screen_width * 0.86, screen_height * 0.15, 140, 40, (0, 0, 0), "Som"]
 
-		self.buttons = [button1_rect, button2_rect, button3_rect]
+		self.buttons = [button1_rect, button2_rect, button3_rect, button4_rect]
 		# Loop
 		self.pause = False
 		self.rodando = True
@@ -47,5 +50,5 @@ class Settings():
 		self.zombie_speed_factor = 2
 		self.zombies_allowed = 5
 		# Player
-		self.player_speed_factor = self.player_lifes = 3
+		self.player_speed_factor = 3
 		
