@@ -7,7 +7,7 @@ class Button:
         self.font = self.pyg.font.Font(None, 36)
 
     def draw(self, surface):
-        self.pyg.draw.rect(surface, (150, 150, 150), self.rect)
+        self.pyg.draw.rect(surface, (150, 150, 150, 127), self.rect)
         text_surface = self.font.render(self.text, True, self.color)
         text_rect = text_surface.get_rect(center=self.rect.center)
         surface.blit(text_surface, text_rect)

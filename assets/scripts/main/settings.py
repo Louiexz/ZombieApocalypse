@@ -1,3 +1,4 @@
+from pygame.sprite import Group
 class Settings():
 	"""Uma classe para armazenar todas as configurações da Invasão
 	zombie."""
@@ -14,6 +15,12 @@ class Settings():
 		self.estado_som = True
 		# Levels
 		self.stage = 0
+		# Grupos de imagens
+		self.bullets = Group()
+		self.zombies = Group()
+		self.drops = Group()
+		# Moedas coletadas
+		self.drops_collected = 0
 		# Configurações dos projéteis
 		self.bullet_width = 3
 		self.bullet_height = 15
@@ -29,12 +36,26 @@ class Settings():
 		# zombies mortos
 		self.count = 0
 		# Botões
-		button1_rect = [screen_width * 0.85, screen_height * 0.05, 160, 40, (0, 0, 0), "Instructions"]
-		button2_rect = [20, screen_height * 0.2, 140, 40, (255, 0, 0), "Quit"]
-		button3_rect = [20, screen_height * 0.3, 140, 40, (0, 0, 0), "Stop/Rerun"]
-		button4_rect = [screen_width * 0.86, screen_height * 0.15, 140, 40, (0, 0, 0), "Som"]
+		buttons = [
+			[screen_width * 0.85, screen_height * 0.05, "Instructions"],
+			[screen_width * 0.85, screen_height * 0.15, "Sound"],
+			[screen_width * 0.4, screen_height * 0.69, "Yes"],
+			[screen_width * 0.53, screen_height * 0.69, "No"],
+			[20, screen_height * 0.3, "Pause"],
+			[20, screen_height * 0.2, "Quit"],
+		]
 
-		self.buttons = [button1_rect, button2_rect, button3_rect, button4_rect]
+		for button in buttons:
+			# Set default color (black)
+			button.append(160)  # Width attribute
+			button.append(40)   # Height attribute
+			if button[2] == "Quit": button.append((255, 0, 0))  # Red color for "Quit" button
+			else: button.append((0, 0, 0))  # Black color for other buttons
+			button.append(button.pop(2))  # Move label to the end of the button sublist
+		
+		self.game_buttons = [buttons[0], buttons[4], buttons[5], buttons[1]]
+		self.quit_buttons = [buttons[4], buttons[5], buttons[2], buttons[3]]
+
 		# Loop
 		self.pause = False
 		self.rodando = True
@@ -43,12 +64,13 @@ class Settings():
 		# Resetar:
 		# Game
 		self.bg_color = (100, 100, 100)
-		self.stage = self.count = 0
+		self.stage = self.count = self.drops_collected = 0
 		# Bala
-		self.bullets_allowed = self.bullet_speed_factor = 3
+		self.bullets_allowed = self.bullet_speed_factor = self.player_speed_factor = 3
 		# Zumbi
 		self.zombie_speed_factor = 2
 		self.zombies_allowed = 5
 		# Player
-		self.player_speed_factor = 3
+		self.player_lifes = 10
+
 		

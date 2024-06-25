@@ -58,9 +58,11 @@ Este é um jogo arcade simples construído com Pygame.
     │   |       └── attack/             # Imagens dos inimigos atacando
     |   ├── scripts/           # Diretório contendo pastas de funções e/ou classes
     │   |   ├── game/              # Funções do jogo, loops e classe de botão
-    │   |   |   ├── game_functs.py      # Funções de texto, sons e chamadas para funções das balas
-    │   |   |   ├── game_controls.py    # Funções de loop, fim de jogo e atualização da tela
-    │   |   |   ├── bullet.py           # Classe da bala
+    │   |   |   ├── game_functs.py      # Funções de texto, sons e chamadas para funções
+    │   |   |   ├── game_loop.py        # Funções de loop (Principal e Game Over)
+    │   |   |   ├── screen_controls.py  # Funções de controle da tela
+    │   |   |   ├── bullet.py           # Classe das balas
+    │   |   |   ├── drop.py             # Classe dos drops
     │   |   |   └── button.py           # Classe dos botões
     │   |   ├── main/              # Inicialização e configurações
     │   |   |   ├── start.py            # Inicialização de classes, configurações e loop
