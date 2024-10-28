@@ -1,8 +1,9 @@
 # ZombieApocalypse
-
-![ApocalipseZumbi](ApocalipseZumbi.png)
-
 Este é um jogo arcade simples construído com Pygame.
+
+
+![Zombie ambience](zombie-gameplay.png)
+![Instruções](zombie.png)
 
 ## Funcionalidades
 

@@ -56,7 +56,7 @@ class GameLoop:
         Restart game?\n\n\n\n
         Development by: Luiz Augusto (Louiexz, github)"""
 
-        GameFuncts.new_text(screen, settings, [msg, 0], 'enemies/zombie-reaching.jpg')
+        GameFuncts.new_text(screen, settings, [msg, 0], 'enemies/zombie-reaching.png')
 
         while True:
             for button in settings.quit_buttons: button.draw(screen)

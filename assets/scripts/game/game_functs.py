@@ -109,7 +109,7 @@ class GameFuncts:
     @staticmethod
     def show_settings(screen, settings):
         msg = """
-Zombie Apocalypse (Apocalipse zombie)\n\n
+Zombie Ambience\n\n
 - Key Esc for exit game;\n
 - Key E for instructions;\n
 - Click or space for shoot;\n
@@ -119,7 +119,7 @@ Zombie Apocalypse (Apocalipse zombie)\n\n
 Development by: Luiz Augusto (Louiexz, github)
 """
         text = [msg, 3000]
-        GameFuncts.new_text(screen, settings, text, 'enemies/zombie-male.jpg')
+        GameFuncts.new_text(screen, settings, text, 'enemies/zombie-ambience.png')
     
     def show_stats(screen, settings):
         stats = [
